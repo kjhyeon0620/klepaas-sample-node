@@ -17,4 +17,4 @@ K-Le-PaaS의 두 번째 앱 실증([K-Le-PaaS #55](https://github.com/kjhyeon062
 
 수동 실행(`workflow_dispatch`)에 `image_tag`를 주면 빌드 없이 그 태그를 배포합니다. 이전 이미지 복구와 없는 이미지 실패 확인에 씁니다.
 
-필요한 저장소 secret: `KLEPAAS_DEPLOY_URL`, `KLEPAAS_REPOSITORY_ID`.
+필요한 설정: 저장소 secret `KLEPAAS_DEPLOY_URL`, 저장소 variable `KLEPAAS_REPOSITORY_ID`.

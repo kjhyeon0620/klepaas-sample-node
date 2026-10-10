@@ -1,7 +1,7 @@
 // K-Le-PaaS 두 번째 앱 실증(#55)용 샘플 HTTP 앱. 의존성 없이 Node 표준 라이브러리만 쓴다.
 const http = require("node:http");
 
-const VERSION = "1.0.0";
+const VERSION = "2.0.0";
 const HEALTH_PATH = "/health";
 const PORT = Number(process.env.PORT || 8080);
 

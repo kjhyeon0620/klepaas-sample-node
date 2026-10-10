@@ -73,13 +73,14 @@ jobs:
       - name: Trigger K-Le-PaaS deployment
         shell: bash   # pipefail: 배포 요청이 실패하면 jq가 아니라 curl의 실패로 단계가 실패한다
         env:
-          # 공개 저장소라 운영 주소가 로그에 남지 않도록 secret으로 둔다
+          # 공개 저장소라 운영 주소가 로그에 남지 않도록 secret으로 둔다.
+          # 저장소 ID는 비밀이 아니고, secret이면 로그의 같은 숫자가 모두 가려져 variable로 둔다
           KLEPAAS_DEPLOY_URL: ${{ secrets.KLEPAAS_DEPLOY_URL }}
-          KLEPAAS_REPOSITORY_ID: ${{ secrets.KLEPAAS_REPOSITORY_ID }}
+          KLEPAAS_REPOSITORY_ID: ${{ vars.KLEPAAS_REPOSITORY_ID }}
           IMAGE_URI: ${{ env.IMAGE_NAME }}:${{ steps.image.outputs.tag }}
         run: |
           if [ -z "$KLEPAAS_DEPLOY_URL" ] || [ -z "$KLEPAAS_REPOSITORY_ID" ]; then
-            echo "::error::KLEPAAS_DEPLOY_URL / KLEPAAS_REPOSITORY_ID secret이 없습니다. K-Le-PaaS 등록 후 설정하세요."
+            echo "::error::KLEPAAS_DEPLOY_URL secret 또는 KLEPAAS_REPOSITORY_ID variable이 없습니다. K-Le-PaaS 등록 후 설정하세요."
             exit 1
           fi
           # 실행마다 발급되는 단기 토큰. K-Le-PaaS가 저장소·브랜치·커밋 claim을 요청과 대조한다
