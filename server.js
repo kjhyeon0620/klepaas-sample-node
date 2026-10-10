@@ -1,8 +1,8 @@
 // K-Le-PaaS 두 번째 앱 실증(#55)용 샘플 HTTP 앱. 의존성 없이 Node 표준 라이브러리만 쓴다.
 const http = require("node:http");
 
-const VERSION = "2.0.0";
-const HEALTH_PATH = "/health";
+const VERSION = "3.0.0";
+const HEALTH_PATH = "/ready"; // v3: 앱이 health 경로를 옮김 (배포 설정 probe는 /health 그대로)
 const PORT = Number(process.env.PORT || 8080);
 
 function createServer(greeting) {
