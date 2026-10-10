@@ -1,0 +1,9 @@
+{
+  "name": "klepaas-sample-node",
+  "private": true,
+  "description": "Sample HTTP app for the K-Le-PaaS second-app deployment demo",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}
